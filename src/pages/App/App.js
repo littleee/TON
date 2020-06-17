@@ -2,18 +2,14 @@ import React, { Suspense, lazy } from "react";
 import logo from "./logo.png";
 import { Layout, Menu, Spin, Anchor } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import { Route, Routes, Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Home = lazy(() => import("../Home"));
 
-const { Header } = Layout;
 const { Link: AnchorLink } = Anchor;
 const antIcon = <LoadingOutlined style={{ fontSize: 100 }} spin />;
 
 const App = styled(({ className }) => {
-  const { hash } = window.location;
-  const navigate = useNavigate();
   return (
     <Layout className={className}>
       <Suspense
@@ -23,18 +19,43 @@ const App = styled(({ className }) => {
           </div>
         }
       >
-        <Anchor className="header">
-          <img src={logo} alt="logo" className="logo" />
-          <AnchorLink href="#news" title="news" />
-          <AnchorLink href="#resources" title="resources" />
-          <AnchorLink href="#howtos" title="howtos" />
-          <AnchorLink href="#decumentation" title="decumentation" />
-        </Anchor>
-        <Home />
+      <div className="header-wrapper">
+        <div className="wrapper">
+          <Anchor className="header">
+            <img src={logo} alt="logo" className="logo" />
+            <AnchorLink href="#news" title="news" />
+            <AnchorLink href="#resources" title="resources" />
+            <AnchorLink href="#howtos" title="howtos" />
+            <AnchorLink href="#decumentation" title="decumentation" />
+          </Anchor>
+          <div>
+            <a href="" target="_blank">Telegram</a>
+            <a href="" target="_blank">Twitter</a>
+          </div>
+        </div>
+      </div>
+      <Home />
       </Suspense>
     </Layout>
   );
 })`
+  .header-wrapper {
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    z-index: 999;
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 1120px;
+      margin: 0 auto;
+    }
+    a {
+      padding: 7px 0 7px 16px;
+      color: #28A5E7;
+    }
+  }
   .header {
     display: flex;
     justify-content: start;
@@ -42,9 +63,7 @@ const App = styled(({ className }) => {
     width: 100%;
     height: 60px;
     line-height: 60px;
-    background: rgb(14, 16, 20);
     color: #fff;
-    padding: 0 60px;
     .ant-anchor {
       width: 100%;
       display: flex;
@@ -53,24 +72,24 @@ const App = styled(({ className }) => {
         display: none;
       }
       .ant-anchor-link-title {
-        color: #fff;
+        color: #28A5E7;
       }
       .ant-anchor-link-active > .ant-anchor-link-title {
-        color: #1890ff;
+        color: #28A5E7;
       }
       a:hover {
-        color: #40a9ff;
+        color: #28A5E7;
       }
     }
   }
 
   .logo {
-    height: 20px;
+    height: 30px;
     margin: 16px 24px 16px 0;
     float: left;
   }
   .ant-menu-item {
-    background: rgb(14, 16, 20);
+
   }
   .loading {
     display: flex;

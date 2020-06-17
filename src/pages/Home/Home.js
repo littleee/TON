@@ -1,262 +1,113 @@
 import React, { useEffect, useState } from "react";
-import footerIcon from "./footer.png";
-import bannerIcon from "./banner.png";
+import telegramIcon from "./telegram.svg";
+import twitterIcon from "./twitter.svg";
+import logo from "./logo.svg";
 import { Layout, Row, Divider, Card, Typography, Col, Tag, Button } from "antd";
-import axios from "axios";
-import echarts from "echarts";
-import cn from "classnames";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
-import dayjs from "dayjs";
-import {
-  getNumberColor,
-  getNumberFormat,
-  getRunDays,
-  getIncomeRate,
-  getNumberWithDecimal,
-} from "../../utils";
-import { Statistic, LineChart } from "../../components";
-import logo from "./logo.png";
-
+import bannerIcon from './logo2.png';
 const { Title, Paragraph, Text } = Typography;
 const { Content, Footer } = Layout;
 
 const HomeComponent = ({ className }) => {
-  const [t1Income, setT1Income] = useState([]);
-  const [handleIncome, setHandleIncome] = useState([]);
-  const [t1Data, setT1Data] = useState([]);
-  const [handleData, setHandleData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const params = useParams();
-
-  useEffect(() => {
-    const fetchCharts = async () => {
-      const [{ data: t1 }, { data: handleBtc }] = await Promise.all([
-        axios.get(
-          `https://raw.githubusercontent.com/odofmine/ocd/master/fund/__t1__/t1/main.json`
-        ),
-        axios.get(
-          `https://raw.githubusercontent.com/odofmine/ocd/master/t1/btc_price/2020-05.json`
-        ),
-      ]);
-      setT1Data(t1);
-      setHandleData(handleBtc);
-      const startPriceByT1 = t1[0][1];
-      const startPriceByHandle = handleBtc[0][1];
-      const t1Income = t1.map((x) => [
-        x[0] * 1000,
-        (x[1] / startPriceByT1 - 1) * 100,
-      ]);
-      const handleIncome = handleBtc.map((x) => [
-        x[0] * 1000,
-        (x[1] / startPriceByHandle - 1) * 100,
-      ]);
-      setT1Income(t1Income);
-      setHandleIncome(handleIncome);
-      setIsLoading(false);
-    };
-
-    fetchCharts();
-  }, []);
-
-  const option = {
-    title: {
-      text: "业绩走势",
-    },
-    tooltip: {
-      trigger: "axis",
-      formatter: function (params) {
-        const date = new Date(params[0].data[0]);
-        const dateFormat = echarts.format.formatTime(
-          "yyyy-MM-dd hh:mm:ss",
-          date
-        );
-        var returnHtmT1 = params[0]
-          ? `${getNumberWithDecimal(params[0].data[1], 2)}%`
-          : "--";
-        var returnHtmlBTC = params[1]
-          ? `${getNumberWithDecimal(params[1].data[1], 2)}%`
-          : "--";
-        return `<span>${dateFormat}</span><br/><span>本策略：${returnHtmT1}</span> <br/> <span>BTCUSD: ${returnHtmlBTC}</span>`;
-      },
-    },
-    legend: {
-      data: [
-        {
-          name: "本策略",
-          // 强制设置图形为圆。
-          icon: "circle",
-        },
-        {
-          name: "BTCUSD",
-          // 强制设置图形为圆。
-          icon: "circle",
-        },
-      ],
-      formatter: (name) => {
-        const value = name === "本策略" ? t1Income : handleIncome;
-        return value.length === 0
-          ? `${name} +0.00%`
-          : `${name} ${getNumberFormat(
-              getNumberWithDecimal(value[value.length - 1][1], 2)
-            )}%`;
-      },
-      right: 0,
-      top: 3,
-    },
-    grid: {
-      left: "3%",
-      right: "4%",
-      bottom: "3%",
-      containLabel: true,
-    },
-
-    xAxis: {
-      type: "time",
-      splitLine: {
-        show: false,
-      },
-      axisLine: {
-        lineStyle: {
-          color: "#888",
-        },
-      },
-    },
-    yAxis: {
-      type: "value",
-      axisLabel: {
-        show: true,
-        formatter: "{value}%",
-      },
-      splitLine: {
-        show: true,
-      },
-      splitNumber: 3,
-      axisLine: {
-        lineStyle: {
-          color: "#888",
-        },
-      },
-    },
-    series: [
-      {
-        name: "本策略",
-        type: "line",
-        data: t1Income,
-        showSymbol: false,
-        hoverAnimation: true,
-        itemStyle: {
-          color: "rgb(73,151,247)",
-        },
-      },
-      {
-        name: "BTCUSD",
-        type: "line",
-        data: handleIncome,
-        itemStyle: {
-          color: "rgb(105,193,111)",
-        },
-        showSymbol: false,
-        hoverAnimation: true,
-      },
-    ],
-  };
 
   return (
     <Layout className={className}>
-      <Divider className="divider" />
       <Content>
         <Row className="banner">
           <div className="title-wrapper">
+          <img src={bannerIcon} alt="bannerIcon" className="bannerIcon" />
             <p className="title">TON Blockchain Test NetWork</p>
-            <Button type="primary">Primary Button</Button>
           </div>
         </Row>
         <div style={{ background: "#fff" }}>
           <Row className="content" id="news">
             <Title>News</Title>
             <Typography>
+              <Text>24.05.2020</Text>
               <Paragraph>
-                蚂蚁的企业级产品是一个庞大且复杂的体系。这类产品不仅量级巨大且功能复杂，而且变动和并发频繁，常常需要设计与开发能够快速的做出响应。同时这类产品中有存在很多类似的页面以及组件，可以通过抽象得到一些稳定且高复用性的内容。
+                The original TON development team is discontinuing its active involvement with the TON project due to reasons <a href="https://telegra.ph/What-Was-TON-And-Why-It-Is-Over-05-12" target="_blank" rel="noopener noreferrer">explained here</a>. The efforts of the team have been redirected to other projects. Some of the internal development branches that have been in active development and testing may get integrated into the main branch. Some minor bugfixes and Github issue answers may occasionally appear if any of the members of the original team have the spare time and inclination to contribute to the community's efforts. The principal development of the TON code is transferred to the free source community.
               </Paragraph>
+              <Text>24.05.2020</Text>
               <Paragraph>
-                随着商业化的趋势，越来越多的企业级产品对更好的用户体验有了进一步的要求。带着这样的一个终极目标，我们（蚂蚁金服体验技术部）经过大量的项目实践和总结，逐步打磨出一个服务于企业级产品的设计体系
-                Ant Design。基于<Text mark>『确定』和『自然』</Text>
-                的设计价值观，通过模块化的解决方案，降低冗余的生产成本，让设计者专注于
-                <Text strong>更好的用户体验</Text>。
+                Integrated some almost-finished components of TON Storage, TON Payments and CPS Fift from testing branches into the main branch.
               </Paragraph>
-              <Title level={2}>设计资源</Title>
+              <Text>14.04.2020</Text>
               <Paragraph>
-                我们提供完善的设计原则、最佳实践和设计资源文件（
-                <Text code>Sketch</Text> 和<Text code>Axure</Text>
-                ），来帮助业务快速设计出高质量的产品原型。
+                Changes described in the next item have been enabled at 16:12 GMT. All unupgraded full nodes, validators and clients stopped working. If you experience this, please upgrade.
               </Paragraph>
+              <Text>10.04.2020</Text>
               <Paragraph>
-                <ul>
-                  <li>
-                    <a href="/docs/spec/proximity">设计原则</a>
-                  </li>
-                  <li>
-                    <a href="/docs/pattern/navigation">设计模式</a>
-                  </li>
-                  <li>
-                    <a href="/docs/resource/download">设计资源</a>
-                  </li>
-                </ul>
+                <Text strong>IMPORTANT:</Text> Changes have been introduced into the block format. Please upgrade all validators, full nodes, lite-clients and TONLib instances. Old software may stop working 13.04 when the new features are enabled.
               </Paragraph>
-
+              <Text>05.04.2020</Text>
               <Paragraph>
-                按<Text keyboard>Esc</Text>键退出阅读……
+                Improved performance of validators running on weaker machines by removing debug-only checks. Please upgrade your validators to continue the heavy-load testing of the testnet. Consider deploying validators on higher-performance servers.
+              </Paragraph>
+              <Text>31.03.2020</Text>
+              <Paragraph>
+                Added new <a href="ConfigParam-HOWTO.txt">TON Configuration Parameter HOWTO</a> describing how to create configuration parameter proposals and vote for or against them.
+              </Paragraph>
+              <Text>01.03.2020</Text>
+              <Paragraph>
+                Added new <a href="DNS-HOWTO.txt">TON DNS documentation</a> describing the steps needed to register a TON DNS subdomain *.temp.ton for your TON Site.
+              </Paragraph>
+              <Text>11.02.2020</Text>
+              <Paragraph>
+                TON Sites are now integrated with TON DNS, <a href="TonSites-HOWTO.txt">TON Sites documentation</a> updated.
+              </Paragraph>
+              <Text>13.12.2019</Text>
+              <Paragraph>
+                TON VM has been updated to support new PRNG instructions. All validators have to be recompiled and upgraded.
+              </Paragraph>
+              <Text>15.11.2019</Text>
+              <Paragraph>
+                The maximal size of ext_message broadcast has been raised to 16 KiB, so that larger smart contracts may be deployed from any (upgraded) full node.
+              </Paragraph>
+              <Text>15.11.2019</Text>
+              <Paragraph>
+                The minimal validator stake has been lowered to 10,001 test Grams.
+              </Paragraph>
+              <Text>15.11.2019</Text>
+              <Paragraph>
+                Test network has been relaunched. All previously created accounts and smart contracts no longer exist.
               </Paragraph>
             </Typography>
           </Row>
         </div>
-        <div style={{ background: "#efefef" }}>
+        <div style={{ background: "#fbfbfb" }}>
           <div className="content" id="resources">
             <Title>Resources</Title>
             <Row justify="space-between" gutter={[16, 16]}>
-              <Col xs={8} lg={8}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="testnet/">Blockchain explorer</a>} className='resources-card'>
+                  Simple blockchain explorer for the TON Blockchain Test Network (testnet)
                 </Card>
               </Col>
-              <Col xs={8} lg={8}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="https://github.com/ton-blockchain/ton">GitHub</a>} className='resources-card'>
+                A GitHub repository with the complete source of the test version of TON Blockchain Software, including Light Client, Full Node and Validator for TON Blockchain.
                 </Card>
               </Col>
-              <Col xs={8} lg={8}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="ton-lite-client-test1.config.json">Testnet Configuration</a>} className='resources-card'>
+                  Configuration file for the TON Blockchain Test Network Lite Client
                 </Card>
               </Col>
             </Row>
             <Row justify="space-between" gutter={[16, 16]}>
-              <Col xs={8} lg={8}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="ton-global.config.json">Global configuration</a>} className='resources-card'>
+                  Global configuration for the TON Blockchain Test Network, required by Full Nodes
                 </Card>
               </Col>
-              <Col xs={8} lg={8}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="ton-global-lite-client.config.json">Combination</a>} className='resources-card'>
+                  Combination of<a href="ton-global.config.json"> ton-global.config.json</a> and <a href="ton-lite-client-test1.config.json">ton-lite-client-test1.config.json</a>, useful for Ton Sites and other TON Services
                 </Card>
               </Col>
-              <Col xs={8} lg={8}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="projects.html">TON-based projects</a>} className='resources-card'>
+                  A list of projects on TON submitted for the <a href="https://contest.com/blockchain-2-bonus">Telegram blockchain competition</a>.
                 </Card>
               </Col>
             </Row>
@@ -267,114 +118,83 @@ const HomeComponent = ({ className }) => {
           <div className="content" id="howtos">
             <Title>HOWTOs</Title>
             <Row justify="space-between" gutter={[16, 16]}>
-              <Col xs={12} lg={6}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="testnet/">README</a>} className='resources-card'>
+                  General information, compilation and installation instructions for the Lite Client
                 </Card>
               </Col>
-              <Col xs={12} lg={6}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="https://github.com/ton-blockchain/ton">HOWTO</a>} className='resources-card'>
+                Step-by-step instructions for creating a new smart contract with the aid of the Lite Client
                 </Card>
               </Col>
-              <Col xs={12} lg={6}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
-                </Card>
-              </Col>
-              <Col xs={12} lg={6}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="ton-lite-client-test1.config.json">FullNode</a>} className='resources-card'>
+                  Step-by-step instructions for setting up a Full Node in the TON Blockchain Test Network
                 </Card>
               </Col>
             </Row>
             <Row justify="space-between" gutter={[16, 16]}>
-              <Col xs={12} lg={6}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="testnet/">Validator</a>} className='resources-card'>
+                  Step-by-step instructions for upgrading a Full Node to a Validator
                 </Card>
               </Col>
-              <Col xs={12} lg={6}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="https://github.com/ton-blockchain/ton">TonSites</a>} className='resources-card'>
+                Step-by-step instructions to set up a proxy for accessing TON Sites or to creating new ones
                 </Card>
               </Col>
-              <Col xs={12} lg={6}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
-                </Card>
-              </Col>
-              <Col xs={12} lg={6}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="ton-lite-client-test1.config.json">DNS</a>} className='resources-card'>
+                  Step-by-step instructions to register your own TON DNS domain, for example for your TON Site
                 </Card>
               </Col>
             </Row>
+            <Row justify="space-between" gutter={[16, 16]}>
+            <Col xs={24} lg={8}>
+              <Card title={<a href="ton-lite-client-test1.config.json">ConfigParam</a>} className='resources-card'>
+                Step-by-step instructions to create configuration parameter proposals and vote for or against them
+              </Card>
+            </Col>
+          </Row>
           </div>
         </div>
 
-        <div style={{ background: "#efefef" }}>
+        <div style={{ background: "#fbfbfb" }}>
           <div className="content" id="decumentation">
             <Title>Decumentation</Title>
             <Row justify="space-between" gutter={[16, 16]}>
-              <Col xs={8} lg={8}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="testnet/">TON Whitepaper</a>} className='resources-card'>
+                  A general description of TON Network and TON Blockchain
                 </Card>
               </Col>
-              <Col xs={8} lg={8}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="https://github.com/ton-blockchain/ton">TVM</a>} className='resources-card'>
+                TON Virtual Machine description
                 </Card>
               </Col>
-              <Col xs={8} lg={8}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="ton-lite-client-test1.config.json">Blockchain description</a>} className='resources-card'>
+                  TON Blockchain description (may include outdated information)
                 </Card>
               </Col>
             </Row>
             <Row justify="space-between" gutter={[16, 16]}>
-              <Col xs={8} lg={8}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="testnet/">Fift</a>} className='resources-card'>
+                  A brief introduction to the Fift programming language
                 </Card>
               </Col>
-              <Col xs={8} lg={8}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="https://github.com/ton-blockchain/ton">Catchain</a>} className='resources-card'>
+                Description of BFT Consensus protocol employed by TON Blockchain while creating new blocks
                 </Card>
               </Col>
-              <Col xs={8} lg={8}>
-                <Card title="Card title">
-                  <p>Card content</p>
-                  <p>Card content</p>
-                  <p>Card content</p>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="ton-lite-client-test1.config.json">Guidelines</a>} className='resources-card'>
+                  Guidelines and best practices related to implementation of TON Blockchain smart contracts
                 </Card>
               </Col>
             </Row>
@@ -382,20 +202,22 @@ const HomeComponent = ({ className }) => {
         </div>
       </Content>
       <Footer className="footer">
-        <Row>
+        <Row className="wrapper">
           <Col xs={12}>
-            <img src={logo} alt="logo" className="logo" />
+            <img src={logo} alt="footer-logo" className="logo" />
           </Col>
           <Col xs={6}>
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
-                color: "#fff",
+                height: '150px'
               }}
             >
-              <img src={logo} alt="logo" className="logo" />
-              <span>telegram 1</span>
+              <img src={telegramIcon} alt="telegramIcon" className="icon" />
+              <a className="footer-link">Telegram English(EN)</a>
+              <a className="footer-link">Telegram 中文(CN) </a>
+              <a className="footer-link">Telegram Channel</a>
             </div>
           </Col>
           <Col xs={6}>
@@ -403,11 +225,11 @@ const HomeComponent = ({ className }) => {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                color: "#fff",
+                height: '150px'
               }}
             >
-              <img src={logo} alt="logo" className="logo" />
-              <span>telegram 2</span>
+              <img src={twitterIcon} alt="telegramIcon" className="icon" />
+              <a className="footer-link">Twitter</a>
             </div>
           </Col>
         </Row>
@@ -417,103 +239,66 @@ const HomeComponent = ({ className }) => {
 };
 
 export const Home = styled(HomeComponent)`
-  .divider {
-    border-color: #000;
-    opacity: 0.8;
-    margin: 0;
+  .bannerIcon {
+    height: 160px;
   }
-
   .banner {
     height: 380px;
-    background: rgb(14, 16, 20);
     display: flex;
     justify-content: center;
     align-items: center;
   }
-
+  .resources-card {
+    min-height: 200px;
+  }
   .title-wrapper {
-    color: #fff;
     max-width: 1120px;
     width: 100%;
+    text-align: center;
+    padding-top: 140px;
+    padding-bottom: 110px;
+    .title {
+      font-size: 36px;
+      color: #222222;
+      font-family:PingFangSC-Semibold,PingFang SC;
+      font-weight:600;
+      line-height:50px;
+      padding-top: 20px;
+    }
   }
   .content {
     max-width: 1120px;
     margin: 0 auto;
     padding: 60px 0;
   }
-  .title-wrapper .title {
-    font-size: 36px;
-    font-family: PingFang SC;
-    font-weight: 200;
-    color: rgba(255, 255, 255, 1);
-    margin-bottom: 17px;
+  a {
+    color: #28A5E7;
   }
-
-  .card {
-    max-width: 1120px;
-    width: 100%;
-    border-radius: 6px;
-    margin: -64px auto 0 auto;
-    box-shadow: 0px 6px 13px 0px rgba(0, 0, 0, 0.03);
-    border-radius: 6px;
-  }
-
-  .card-left {
-    padding: 0 20px;
-    margin-bottom: 20px;
-  }
-  .card-right {
-    padding: 0 20px;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
-  }
-
-  .more {
-    font-size: 14px;
-    font-family: PingFang SC;
-    font-weight: 400;
-    color: rgba(19, 24, 31, 1);
-    opacity: 0.6;
-    margin: 80px auto;
-    text-align: center;
-  }
-
-  .green {
-    color: #3f8600;
-  }
-  .red {
-    color: #cf1322;
-  }
-  .grey {
-    color: rgba(19, 24, 31, 0.6);
+  .ant-typography a {
+    color: #28A5E7;
   }
 
   .footer {
-    background: rgb(14, 16, 20);
+    background: #353F47;
     text-align: center;
-  }
-  .footer-title {
-    font-size: 18px;
-    font-family: PingFang SC;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 1);
-  }
-
-  .footer-subtitle {
-    font-size: 14px;
-    font-family: PingFang SC;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 1);
-    opacity: 0.6;
-    margin-bottom: 60px;
-  }
-
-  .footer-icon {
-    width: 100%;
-    max-width: 412px;
-    margin-bottom: 108px;
+    height: 300px;
+    .wrapper {
+      max-width: 1120px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      .logo {
+        height: 40px;
+      }
+      .icon {
+        height: 40px;
+        margin-bottom: 20px;
+      }
+      .footer-link {
+        margin-bottom: 16px;
+        color: #28A5E7;
+      }
+    }
   }
 `;
