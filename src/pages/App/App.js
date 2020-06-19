@@ -20,18 +20,20 @@ const App = styled(({ className }) => {
         }
       >
       <div className="header-wrapper">
+      <div style={{maxWidth: '1120px',display: 'flex', margin: '0 auto', padding: '0 20px'}}>
+        <img src={logo} alt="logo" className="logo" />
         <div className="wrapper">
-          <Anchor className="header">
-            <img src={logo} alt="logo" className="logo" />
-            <AnchorLink href="#news" title="news" />
+          <Anchor className="header" >
+            <AnchorLink href="#news" title="news"/>
             <AnchorLink href="#resources" title="resources" />
             <AnchorLink href="#howtos" title="howtos" />
             <AnchorLink href="#decumentation" title="decumentation" />
           </Anchor>
-          <div>
-            <a href="" target="_blank">Telegram</a>
-            <a href="" target="_blank">Twitter</a>
-          </div>
+          <Anchor className="header">
+            <AnchorLink href="#telegram" title="Telegram" />
+            <AnchorLink href="#twitter" title="Twitter" />
+          </Anchor>
+        </div>
         </div>
       </div>
       <Home />
@@ -48,11 +50,11 @@ const App = styled(({ className }) => {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 1120px;
+      width: 100%;
       margin: 0 auto;
     }
     a {
-      padding: 7px 0 7px 16px;
+      padding: 7px 3px 7px 16px;
       color: #28A5E7;
     }
   }
@@ -64,6 +66,7 @@ const App = styled(({ className }) => {
     height: 60px;
     line-height: 60px;
     color: #fff;
+    overflow: hidden;
     .ant-anchor {
       width: 100%;
       display: flex;
@@ -88,15 +91,19 @@ const App = styled(({ className }) => {
     margin: 16px 24px 16px 0;
     float: left;
   }
-  .ant-menu-item {
-
-  }
   .loading {
     display: flex;
     width: 100vw;
     height: 100vh;
     justify-content: center;
     align-items: center;
+  }
+  @media (max-width: 480px) {
+    .header-wrapper {
+      .wrapper {
+        display: none!important;
+      }
+    }
   }
 `;
 

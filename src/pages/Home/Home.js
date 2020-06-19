@@ -20,7 +20,7 @@ const HomeComponent = ({ className }) => {
           </div>
         </Row>
         <div style={{ background: "#fff" }}>
-          <Row className="content" id="news">
+          <Row className="content" id="news" style={{paddingTop: 0}}>
             <Title>News</Title>
             <Typography>
               <Text>24.05.2020</Text>
@@ -79,7 +79,7 @@ const HomeComponent = ({ className }) => {
             <Title>Resources</Title>
             <Row justify="space-between" gutter={[16, 16]}>
               <Col xs={24} lg={8}>
-                <Card title={<a href="testnet/">Blockchain explorer</a>} className='resources-card'>
+                <Card title={<a href="https://tengram.com/">Blockchain explorer</a>} className='resources-card'>
                   Simple blockchain explorer for the TON Blockchain Test Network (testnet)
                 </Card>
               </Col>
@@ -119,41 +119,41 @@ const HomeComponent = ({ className }) => {
             <Title>HOWTOs</Title>
             <Row justify="space-between" gutter={[16, 16]}>
               <Col xs={24} lg={8}>
-                <Card title={<a href="testnet/">README</a>} className='resources-card'>
+                <Card title={<a href="README.txt">README</a>} className='resources-card'>
                   General information, compilation and installation instructions for the Lite Client
                 </Card>
               </Col>
               <Col xs={24} lg={8}>
-                <Card title={<a href="https://github.com/ton-blockchain/ton">HOWTO</a>} className='resources-card'>
+                <Card title={<a href="HOWTO.txt">HOWTO</a>} className='resources-card'>
                 Step-by-step instructions for creating a new smart contract with the aid of the Lite Client
                 </Card>
               </Col>
               <Col xs={24} lg={8}>
-                <Card title={<a href="ton-lite-client-test1.config.json">FullNode</a>} className='resources-card'>
+                <Card title={<a href="FullNode-HOWTO.txt">FullNode</a>} className='resources-card'>
                   Step-by-step instructions for setting up a Full Node in the TON Blockchain Test Network
                 </Card>
               </Col>
             </Row>
             <Row justify="space-between" gutter={[16, 16]}>
               <Col xs={24} lg={8}>
-                <Card title={<a href="testnet/">Validator</a>} className='resources-card'>
+                <Card title={<a href="Validator-HOWTO.txt">Validator</a>} className='resources-card'>
                   Step-by-step instructions for upgrading a Full Node to a Validator
                 </Card>
               </Col>
               <Col xs={24} lg={8}>
-                <Card title={<a href="https://github.com/ton-blockchain/ton">TonSites</a>} className='resources-card'>
+                <Card title={<a href="TonSites-HOWTO.txt">TonSites</a>} className='resources-card'>
                 Step-by-step instructions to set up a proxy for accessing TON Sites or to creating new ones
                 </Card>
               </Col>
               <Col xs={24} lg={8}>
-                <Card title={<a href="ton-lite-client-test1.config.json">DNS</a>} className='resources-card'>
+                <Card title={<a href="DNS-HOWTO.txt">DNS</a>} className='resources-card'>
                   Step-by-step instructions to register your own TON DNS domain, for example for your TON Site
                 </Card>
               </Col>
             </Row>
             <Row justify="space-between" gutter={[16, 16]}>
             <Col xs={24} lg={8}>
-              <Card title={<a href="ton-lite-client-test1.config.json">ConfigParam</a>} className='resources-card'>
+              <Card title={<a href="ConfigParam-HOWTO.txt">ConfigParam</a>} className='resources-card'>
                 Step-by-step instructions to create configuration parameter proposals and vote for or against them
               </Card>
             </Col>
@@ -163,37 +163,37 @@ const HomeComponent = ({ className }) => {
 
         <div style={{ background: "#fbfbfb" }}>
           <div className="content" id="decumentation">
-            <Title>Decumentation</Title>
+            <Title>Documentation</Title>
             <Row justify="space-between" gutter={[16, 16]}>
               <Col xs={24} lg={8}>
-                <Card title={<a href="testnet/">TON Whitepaper</a>} className='resources-card'>
+                <Card title={<a href="ton.pdf">TON Whitepaper</a>} className='resources-card'>
                   A general description of TON Network and TON Blockchain
                 </Card>
               </Col>
               <Col xs={24} lg={8}>
-                <Card title={<a href="https://github.com/ton-blockchain/ton">TVM</a>} className='resources-card'>
+                <Card title={<a href="tvm.pdf">TVM</a>} className='resources-card'>
                 TON Virtual Machine description
                 </Card>
               </Col>
               <Col xs={24} lg={8}>
-                <Card title={<a href="ton-lite-client-test1.config.json">Blockchain description</a>} className='resources-card'>
+                <Card title={<a href="tblkch.pdf">Blockchain description</a>} className='resources-card'>
                   TON Blockchain description (may include outdated information)
                 </Card>
               </Col>
             </Row>
             <Row justify="space-between" gutter={[16, 16]}>
               <Col xs={24} lg={8}>
-                <Card title={<a href="testnet/">Fift</a>} className='resources-card'>
+                <Card title={<a href="fiftbase.pdf">Fift</a>} className='resources-card'>
                   A brief introduction to the Fift programming language
                 </Card>
               </Col>
               <Col xs={24} lg={8}>
-                <Card title={<a href="https://github.com/ton-blockchain/ton">Catchain</a>} className='resources-card'>
+                <Card title={<a href="catchain.pdf">Catchain</a>} className='resources-card'>
                 Description of BFT Consensus protocol employed by TON Blockchain while creating new blocks
                 </Card>
               </Col>
               <Col xs={24} lg={8}>
-                <Card title={<a href="ton-lite-client-test1.config.json">Guidelines</a>} className='resources-card'>
+                <Card title={<a href="smc-guidelines.txt">Guidelines</a>} className='resources-card'>
                   Guidelines and best practices related to implementation of TON Blockchain smart contracts
                 </Card>
               </Col>
@@ -203,16 +203,17 @@ const HomeComponent = ({ className }) => {
       </Content>
       <Footer className="footer">
         <Row className="wrapper">
-          <Col xs={12}>
+          <Col xs={24} sm={12}>
             <img src={logo} alt="footer-logo" className="logo" />
           </Col>
-          <Col xs={6}>
+          <Col xs={24} sm={6} style={{margin: '20px auto'}}>
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
                 height: '150px'
               }}
+              id='telegram'
             >
               <img src={telegramIcon} alt="telegramIcon" className="icon" />
               <a className="footer-link">Telegram English(EN)</a>
@@ -220,13 +221,14 @@ const HomeComponent = ({ className }) => {
               <a className="footer-link">Telegram Channel</a>
             </div>
           </Col>
-          <Col xs={6}>
+          <Col  xs={24} sm={6} style={{margin: '20px auto'}}>
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
                 height: '150px'
               }}
+              id="twitter"
             >
               <img src={twitterIcon} alt="telegramIcon" className="icon" />
               <a className="footer-link">Twitter</a>
@@ -243,7 +245,6 @@ export const Home = styled(HomeComponent)`
     height: 160px;
   }
   .banner {
-    height: 380px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -255,8 +256,7 @@ export const Home = styled(HomeComponent)`
     max-width: 1120px;
     width: 100%;
     text-align: center;
-    padding-top: 140px;
-    padding-bottom: 110px;
+    padding: 160px 20px 100px 20px;
     .title {
       font-size: 36px;
       color: #222222;
@@ -269,7 +269,7 @@ export const Home = styled(HomeComponent)`
   .content {
     max-width: 1120px;
     margin: 0 auto;
-    padding: 60px 0;
+    padding: 60px 20px;
   }
   a {
     color: #28A5E7;
@@ -281,11 +281,12 @@ export const Home = styled(HomeComponent)`
   .footer {
     background: #353F47;
     text-align: center;
-    height: 300px;
+    min-height: 300px;
     .wrapper {
       max-width: 1120px;
       margin: 0 auto;
       height: 100%;
+      min-height: 300px;
       display: flex;
       align-items: center;
       .logo {
