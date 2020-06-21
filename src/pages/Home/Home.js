@@ -9,14 +9,17 @@ const { Title, Paragraph, Text } = Typography;
 const { Content, Footer } = Layout;
 
 const HomeComponent = ({ className }) => {
-
+  const [ isMore, setIsMore ] = useState(false);
   return (
     <Layout className={className}>
       <Content>
         <Row className="banner">
           <div className="title-wrapper">
           <img src={bannerIcon} alt="bannerIcon" className="bannerIcon" />
-            <p className="title">TON Blockchain Test NetWork</p>
+            <div className="title-wrapper-div">
+              <p className="title">TON Community Blockchain</p>
+              <p className="title">Test Network Launch</p>
+            </div>
           </div>
         </Row>
         <div style={{ background: "#fff" }}>
@@ -35,43 +38,48 @@ const HomeComponent = ({ className }) => {
               <Paragraph>
                 Changes described in the next item have been enabled at 16:12 GMT. All unupgraded full nodes, validators and clients stopped working. If you experience this, please upgrade.
               </Paragraph>
-              <Text>10.04.2020</Text>
-              <Paragraph>
-                <Text strong>IMPORTANT:</Text> Changes have been introduced into the block format. Please upgrade all validators, full nodes, lite-clients and TONLib instances. Old software may stop working 13.04 when the new features are enabled.
-              </Paragraph>
-              <Text>05.04.2020</Text>
-              <Paragraph>
-                Improved performance of validators running on weaker machines by removing debug-only checks. Please upgrade your validators to continue the heavy-load testing of the testnet. Consider deploying validators on higher-performance servers.
-              </Paragraph>
-              <Text>31.03.2020</Text>
-              <Paragraph>
-                Added new <a href="ConfigParam-HOWTO.txt">TON Configuration Parameter HOWTO</a> describing how to create configuration parameter proposals and vote for or against them.
-              </Paragraph>
-              <Text>01.03.2020</Text>
-              <Paragraph>
-                Added new <a href="DNS-HOWTO.txt">TON DNS documentation</a> describing the steps needed to register a TON DNS subdomain *.temp.ton for your TON Site.
-              </Paragraph>
-              <Text>11.02.2020</Text>
-              <Paragraph>
-                TON Sites are now integrated with TON DNS, <a href="TonSites-HOWTO.txt">TON Sites documentation</a> updated.
-              </Paragraph>
-              <Text>13.12.2019</Text>
-              <Paragraph>
-                TON VM has been updated to support new PRNG instructions. All validators have to be recompiled and upgraded.
-              </Paragraph>
-              <Text>15.11.2019</Text>
-              <Paragraph>
-                The maximal size of ext_message broadcast has been raised to 16 KiB, so that larger smart contracts may be deployed from any (upgraded) full node.
-              </Paragraph>
-              <Text>15.11.2019</Text>
-              <Paragraph>
-                The minimal validator stake has been lowered to 10,001 test Grams.
-              </Paragraph>
-              <Text>15.11.2019</Text>
-              <Paragraph>
-                Test network has been relaunched. All previously created accounts and smart contracts no longer exist.
-              </Paragraph>
-            </Typography>
+              {
+                isMore ?
+                <>
+                  <Text>10.04.2020</Text>
+                  <Paragraph>
+                    <Text strong>IMPORTANT:</Text> Changes have been introduced into the block format. Please upgrade all validators, full nodes, lite-clients and TONLib instances. Old software may stop working 13.04 when the new features are enabled.
+                  </Paragraph>
+                  <Text>05.04.2020</Text>
+                  <Paragraph>
+                    Improved performance of validators running on weaker machines by removing debug-only checks. Please upgrade your validators to continue the heavy-load testing of the testnet. Consider deploying validators on higher-performance servers.
+                  </Paragraph>
+                  <Text>31.03.2020</Text>
+                  <Paragraph>
+                    Added new <a href="ConfigParam-HOWTO.txt">TON Configuration Parameter HOWTO</a> describing how to create configuration parameter proposals and vote for or against them.
+                  </Paragraph>
+                  <Text>01.03.2020</Text>
+                  <Paragraph>
+                    Added new <a href="DNS-HOWTO.txt">TON DNS documentation</a> describing the steps needed to register a TON DNS subdomain *.temp.ton for your TON Site.
+                  </Paragraph>
+                  <Text>11.02.2020</Text>
+                  <Paragraph>
+                    TON Sites are now integrated with TON DNS, <a href="TonSites-HOWTO.txt">TON Sites documentation</a> updated.
+                  </Paragraph>
+                  <Text>13.12.2019</Text>
+                  <Paragraph>
+                    TON VM has been updated to support new PRNG instructions. All validators have to be recompiled and upgraded.
+                  </Paragraph>
+                  <Text>15.11.2019</Text>
+                  <Paragraph>
+                    The maximal size of ext_message broadcast has been raised to 16 KiB, so that larger smart contracts may be deployed from any (upgraded) full node.
+                  </Paragraph>
+                  <Text>15.11.2019</Text>
+                  <Paragraph>
+                    The minimal validator stake has been lowered to 10,001 test Grams.
+                  </Paragraph>
+                  <Text>15.11.2019</Text>
+                  <Paragraph>
+                    Test network has been relaunched. All previously created accounts and smart contracts no longer exist.
+                  </Paragraph>
+                </> : <Text onClick={()=>setIsMore(true)} className='more'>More...</Text>
+              }
+              </Typography>
           </Row>
         </div>
         <div style={{ background: "#fbfbfb" }}>
@@ -203,35 +211,52 @@ const HomeComponent = ({ className }) => {
       </Content>
       <Footer className="footer">
         <Row className="wrapper">
-          <Col xs={24} sm={12}>
+          <Col xs={24} sm={7}>
             <img src={logo} alt="footer-logo" className="logo" />
           </Col>
-          <Col xs={24} sm={6} style={{margin: '20px auto'}}>
+          <Col xs={24} sm={10} style={{margin: '20px auto'}}>
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
-                height: '150px'
+                alignItems: 'start',
+                color: '#fff'
               }}
               id='telegram'
             >
               <img src={telegramIcon} alt="telegramIcon" className="icon" />
-              <a className="footer-link">Telegram English(EN)</a>
-              <a className="footer-link">Telegram 中文(CN) </a>
-              <a className="footer-link">Telegram Channel</a>
+              <div style={{margin: '10px 0'}}>
+              <Text style={{color: '#fff', display: 'block'}}>TON Community Telegram Channel</Text>
+              <a href="https://t.me/ton_news">@TON_news</a>
+              </div>
+              <div style={{margin: '10px 0'}}>
+              <Text style={{color: '#fff', display: 'block'}}>TON Community Telegram Group</Text>
+              <div>
+                <span style={{opacity: 0.5}}>English：</span> <a href="https://t.me/ton_en" className="footer-link">@TON_en</a>
+                <span style={{opacity: 0.5}}>中文：</span><a href="https://t.me/ton_cn" className="footer-link">@TON_cn</a>
+              </div>
+              </div>
+              <div style={{margin: '10px 0'}}>
+              <Text style={{color: '#fff', display: 'block'}}>Others Group</Text>
+              <div>
+                <span style={{opacity: 0.5}}>Research：</span><a href="https://t.me/ton_research" className="footer-link">@TON_research</a>
+                <span style={{opacity: 0.5}}>Ru Dev：</span><a href="https://t.me/TONgramDev" className="footer-link"> @TONgramDev</a>
+              </div>
+              </div>
             </div>
           </Col>
-          <Col  xs={24} sm={6} style={{margin: '20px auto'}}>
+          <Col  xs={24} sm={7} style={{margin: '20px auto'}}>
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
-                height: '150px'
+                alignItems: 'start'
               }}
               id="twitter"
             >
               <img src={twitterIcon} alt="telegramIcon" className="icon" />
-              <a className="footer-link">Twitter</a>
+              <Text style={{color: '#fff', display: 'block'}}>TON Community Twitter</Text>
+              <a href="https://twitter.com/TONCommunity" className="footer-link">@TONCommunity</a>
             </div>
           </Col>
         </Row>
@@ -251,19 +276,26 @@ export const Home = styled(HomeComponent)`
   }
   .resources-card {
     min-height: 200px;
+    border: 0;
+    box-shadow: 0px 5px 20px rgba(0,0,0, 0.1);
+    margin: 4px;
   }
   .title-wrapper {
     max-width: 1120px;
     width: 100%;
     text-align: center;
     padding: 160px 20px 100px 20px;
-    .title {
-      font-size: 36px;
-      color: #222222;
-      font-family:PingFangSC-Semibold,PingFang SC;
-      font-weight:600;
-      line-height:50px;
+    .title-wrapper-div {
       padding-top: 20px;
+      padding-bottom: 10px;
+      .title {
+        font-size: 36px;
+        color: #222222;
+        font-family:PingFangSC-Semibold,PingFang SC;
+        font-weight:600;
+        line-height:50px;
+        margin: 0;
+      }
     }
   }
   .content {
@@ -277,21 +309,24 @@ export const Home = styled(HomeComponent)`
   .ant-typography a {
     color: #28A5E7;
   }
-
+  .more {
+    color: #28A5E7;
+    cursor: pointer;
+    &:hover {
+      color: #71bfff;
+    }
+  }
   .footer {
     background: #353F47;
-    text-align: center;
     min-height: 300px;
     .wrapper {
+      padding: 10px 0;
       max-width: 1120px;
       margin: 0 auto;
       height: 100%;
       min-height: 300px;
       display: flex;
-      align-items: center;
-      .logo {
-        height: 40px;
-      }
+      align-items: start;
       .icon {
         height: 40px;
         margin-bottom: 20px;
@@ -299,6 +334,7 @@ export const Home = styled(HomeComponent)`
       .footer-link {
         margin-bottom: 16px;
         color: #28A5E7;
+        margin-right: 24px;
       }
     }
   }
