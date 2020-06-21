@@ -23,3 +23,15 @@ code {
 .ant-layout {
   background: #fff!important;
 }
+.ant-anchor-ink {
+  display: none;
+}
+.ant-anchor-link-active > .ant-anchor-link-title  {
+  color: #28A5E7;
+}
+a:hover {
+  color: #71bfff!important;
+}
+.ant-anchor-link-title {
+  color: #28A5E7 !important;
+}

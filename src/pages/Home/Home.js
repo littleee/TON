@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import telegramIcon from "./telegram.svg";
 import twitterIcon from "./twitter.svg";
 import logo from "./logo.svg";
-import { Layout, Row, Divider, Card, Typography, Col, Tag, Button } from "antd";
+import { Layout, Row, Card, Typography, Col } from "antd";
 import styled from "styled-components";
 import bannerIcon from './logo2.png';
 const { Title, Paragraph, Text } = Typography;
@@ -23,12 +23,12 @@ const HomeComponent = ({ className }) => {
           </div>
         </Row>
         <div style={{ background: "#fff" }}>
-          <Row className="content" id="news" style={{paddingTop: 0}}>
+          <Row className="content" id="news">
             <Title>News</Title>
             <Typography>
               <Text>24.05.2020</Text>
               <Paragraph>
-                The original TON development team is discontinuing its active involvement with the TON project due to reasons <a href="https://telegra.ph/What-Was-TON-And-Why-It-Is-Over-05-12" target="_blank" rel="noopener noreferrer">explained here</a>. The efforts of the team have been redirected to other projects. Some of the internal development branches that have been in active development and testing may get integrated into the main branch. Some minor bugfixes and Github issue answers may occasionally appear if any of the members of the original team have the spare time and inclination to contribute to the community's efforts. The principal development of the TON code is transferred to the free source community.
+                The original TON development team is discontinuing its active involvement with the TON project due to reasons <a target="_blank" rel="noopener noreferrer" href="https://telegra.ph/What-Was-TON-And-Why-It-Is-Over-05-12">explained here</a>. The efforts of the team have been redirected to other projects. Some of the internal development branches that have been in active development and testing may get integrated into the main branch. Some minor bugfixes and Github issue answers may occasionally appear if any of the members of the original team have the spare time and inclination to contribute to the community's efforts. The principal development of the TON code is transferred to the free source community.
               </Paragraph>
               <Text>24.05.2020</Text>
               <Paragraph>
@@ -87,35 +87,35 @@ const HomeComponent = ({ className }) => {
             <Title>Resources</Title>
             <Row justify="space-between" gutter={[16, 16]}>
               <Col xs={24} lg={8}>
-                <Card title={<a href="https://tengram.com/">Blockchain explorer</a>} className='resources-card'>
+                <Card title={<a target="_blank" rel="noopener noreferrer" href="https://tengram.com/">Blockchain explorer</a>} className='resources-card'>
                   Simple blockchain explorer for the TON Blockchain Test Network (testnet)
                 </Card>
               </Col>
               <Col xs={24} lg={8}>
-                <Card title={<a href="https://github.com/ton-blockchain/ton">GitHub</a>} className='resources-card'>
+                <Card title={<a target="_blank" rel="noopener noreferrer" href="https://github.com/ton-blockchain/ton">GitHub</a>} className='resources-card'>
                 A GitHub repository with the complete source of the test version of TON Blockchain Software, including Light Client, Full Node and Validator for TON Blockchain.
                 </Card>
               </Col>
               <Col xs={24} lg={8}>
-                <Card title={<a href="ton-lite-client-test1.config.json">Testnet Configuration</a>} className='resources-card'>
+                <Card title={<a target="_blank" href="ton-lite-client-test1.config.json">Testnet Configuration</a>} className='resources-card'>
                   Configuration file for the TON Blockchain Test Network Lite Client
                 </Card>
               </Col>
             </Row>
             <Row justify="space-between" gutter={[16, 16]}>
               <Col xs={24} lg={8}>
-                <Card title={<a href="ton-global.config.json">Global configuration</a>} className='resources-card'>
+                <Card title={<a target="_blank" href="ton-global.config.json">Global configuration</a>} className='resources-card'>
                   Global configuration for the TON Blockchain Test Network, required by Full Nodes
                 </Card>
               </Col>
               <Col xs={24} lg={8}>
-                <Card title={<a href="ton-global-lite-client.config.json">Combination</a>} className='resources-card'>
-                  Combination of<a href="ton-global.config.json"> ton-global.config.json</a> and <a href="ton-lite-client-test1.config.json">ton-lite-client-test1.config.json</a>, useful for Ton Sites and other TON Services
+                <Card title={<a target="_blank" href="ton-global-lite-client.config.json">Combination</a>} className='resources-card'>
+                  Combination of<a target="_blank" rel="noopener noreferrer" href="ton-global.config.json"> ton-global.config.json</a> and <a target="_blank" href="ton-lite-client-test1.config.json">ton-lite-client-test1.config.json</a>, useful for Ton Sites and other TON Services
                 </Card>
               </Col>
               <Col xs={24} lg={8}>
                 <Card title={<a href="projects.html">TON-based projects</a>} className='resources-card'>
-                  A list of projects on TON submitted for the <a href="https://contest.com/blockchain-2-bonus">Telegram blockchain competition</a>.
+                  A list of projects on TON submitted for the <a target="_blank" rel="noopener noreferrer" href="https://contest.com/blockchain-2-bonus">Telegram blockchain competition</a>.
                 </Card>
               </Col>
             </Row>
@@ -227,25 +227,25 @@ const HomeComponent = ({ className }) => {
               <img src={telegramIcon} alt="telegramIcon" className="icon" />
               <div style={{margin: '10px 0'}}>
               <Text style={{color: '#fff', display: 'block'}}>TON Community Telegram Channel</Text>
-              <a href="https://t.me/ton_news">@TON_news</a>
+              <a target="_blank" rel="noopener noreferrer" href="https://t.me/ton_news">@TON_news</a>
               </div>
               <div style={{margin: '10px 0'}}>
               <Text style={{color: '#fff', display: 'block'}}>TON Community Telegram Group</Text>
               <div>
-                <span style={{opacity: 0.5}}>English：</span> <a href="https://t.me/ton_en" className="footer-link">@TON_en</a>
-                <span style={{opacity: 0.5}}>中文：</span><a href="https://t.me/ton_cn" className="footer-link">@TON_cn</a>
+                <span style={{opacity: 0.5}}>English：</span> <a target="_blank" rel="noopener noreferrer"  href="https://t.me/ton_en" className="footer-link">@TON_en</a>
+                <span style={{opacity: 0.5}}>中文：</span><a target="_blank" rel="noopener noreferrer"  href="https://t.me/ton_cn" className="footer-link">@TON_cn</a>
               </div>
               </div>
               <div style={{margin: '10px 0'}}>
               <Text style={{color: '#fff', display: 'block'}}>Others Group</Text>
               <div>
-                <span style={{opacity: 0.5}}>Research：</span><a href="https://t.me/ton_research" className="footer-link">@TON_research</a>
-                <span style={{opacity: 0.5}}>Ru Dev：</span><a href="https://t.me/TONgramDev" className="footer-link"> @TONgramDev</a>
+                <span style={{opacity: 0.5}}>Research：</span><a target="_blank" rel="noopener noreferrer"  href="https://t.me/ton_research" className="footer-link">@TON_research</a>
+                <span style={{opacity: 0.5}}>Ru Dev：</span><a target="_blank" rel="noopener noreferrer"  href="https://t.me/TONgramDev" className="footer-link"> @TONgramDev</a>
               </div>
               </div>
             </div>
           </Col>
-          <Col  xs={24} sm={7} style={{margin: '20px auto'}}>
+          <Col xs={24} sm={7} style={{margin: '20px auto'}}>
             <div
               style={{
                 display: "flex",
@@ -256,7 +256,7 @@ const HomeComponent = ({ className }) => {
             >
               <img src={twitterIcon} alt="telegramIcon" className="icon" />
               <Text style={{color: '#fff', display: 'block'}}>TON Community Twitter</Text>
-              <a href="https://twitter.com/TONCommunity" className="footer-link">@TONCommunity</a>
+              <a target="_blank" rel="noopener noreferrer"  href="https://twitter.com/TONCommunity" className="footer-link">@TONCommunity</a>
             </div>
           </Col>
         </Row>
@@ -284,7 +284,7 @@ export const Home = styled(HomeComponent)`
     max-width: 1120px;
     width: 100%;
     text-align: center;
-    padding: 160px 20px 100px 20px;
+    padding: 160px 20px 40px 20px;
     .title-wrapper-div {
       padding-top: 20px;
       padding-bottom: 10px;
