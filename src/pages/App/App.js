@@ -15,7 +15,6 @@ const antIcon = <LoadingOutlined style={{ fontSize: 100 }} spin />;
 const App = styled(({ className }) => {
   const scrollTop = useScroll();
   const [clientWidth, setClientWidth] = useState(document.body.clientWidth);
-  console.log(123, clientWidth);
   window.onresize=function(){
     setClientWidth(document.body.clientWidth)
   }
