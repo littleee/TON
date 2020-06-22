@@ -328,7 +328,7 @@ export const Home = styled(HomeComponent)`
       display: flex;
       align-items: start;
       .icon {
-        height: 40px;
+        height: 30px;
         margin-bottom: 20px;
       }
       .footer-link {
@@ -336,6 +336,9 @@ export const Home = styled(HomeComponent)`
         color: #28A5E7;
         margin-right: 24px;
       }
+    }
+    .logo {
+      margin-right: 0
     }
   }
 `;
