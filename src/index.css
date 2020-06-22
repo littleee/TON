@@ -35,3 +35,14 @@ a:hover {
 .ant-anchor-link-title {
   color: #28A5E7 !important;
 }
+.ant-anchor-link {
+  padding: 7px 0!important;
+}
+
+.ant-drawer-body .ant-anchor-link {
+  line-height: 2;
+}
+
+.ant-drawer-body button {
+  margin-top: 20px;
+}

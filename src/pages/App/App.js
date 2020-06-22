@@ -40,7 +40,7 @@ const App = styled(({ className }) => {
           <img src={logo} alt="logo" className="logo" />
         </div>
         {
-          clientWidth > 480 ?
+          clientWidth > 768 ?
           <div className="wrapper">
             <Anchor className="header" >
               <AnchorLink href="#news" title="News" />
@@ -51,7 +51,7 @@ const App = styled(({ className }) => {
             <Button onClick={()=>{window.open('https://t.me/TONC_bot')}}type="primary">Join & Get 100+ coins for free</Button>
           </div> :
           <div className="wrapper-mobile">
-            <Button type="primary" shape="circle" icon={<MenuOutlined/>} onClick={showDrawer}/>
+            <Button shape="circle" icon={<MenuOutlined/>} onClick={showDrawer}/>
             <Drawer
               placement="right"
               closable={false}
@@ -64,7 +64,7 @@ const App = styled(({ className }) => {
               <AnchorLink href="#howtos" title="HOWTOs" />
               <AnchorLink href="#decumentation" title="Documentation" />
             </Anchor>
-            <Button onClick={()=>{window.open('https://t.me/TONC_bot')}}type="primary" style={{fontSize: '12px'}}>Join & Get 100+ coins for free</Button>
+            <Button onClick={()=>{window.open('https://t.me/TONC_bot')}} type="primary" style={{fontSize: '12px'}}>Join & Get 100+ coins for free</Button>
             </Drawer>
           </div>
         }
@@ -153,6 +153,10 @@ const App = styled(({ className }) => {
       background-color: #3997e4;
       border-color: #3997e4;
     }
+  }
+  .ant-btn-circle {
+    color: #28A5E7;
+    border: 0;
   }
 `;
 

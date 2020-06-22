@@ -231,16 +231,27 @@ const HomeComponent = ({ className }) => {
               </div>
               <div style={{margin: '10px 0'}}>
               <Text style={{color: '#fff', display: 'block'}}>TON Community Telegram Group</Text>
-              <div>
-                <span style={{opacity: 0.5}}>English：</span> <a target="_blank" rel="noopener noreferrer"  href="https://t.me/ton_en" className="footer-link">@TON_en</a>
-                <span style={{opacity: 0.5}}>中文：</span><a target="_blank" rel="noopener noreferrer"  href="https://t.me/ton_cn" className="footer-link">@TON_cn</a>
+              <div className="text-wrapper">
+              <div  style={{marginRight:'10px'}}>
+                <span style={{opacity: 0.5}}>English：</span>
+                <a target="_blank" rel="noopener noreferrer"  href="https://t.me/ton_en">@TON_en</a>
+                </div>
+                <div>
+                <span style={{opacity: 0.5}}>中文：</span>
+                <a target="_blank" rel="noopener noreferrer"  href="https://t.me/ton_cn">@TON_cn</a>
+                </div>
               </div>
               </div>
               <div style={{margin: '10px 0'}}>
               <Text style={{color: '#fff', display: 'block'}}>Others Group</Text>
-              <div>
-                <span style={{opacity: 0.5}}>Research：</span><a target="_blank" rel="noopener noreferrer"  href="https://t.me/ton_research" className="footer-link">@TON_research</a>
-                <span style={{opacity: 0.5}}>Ru Dev：</span><a target="_blank" rel="noopener noreferrer"  href="https://t.me/TONgramDev" className="footer-link"> @TONgramDev</a>
+              <div className="text-wrapper">
+                <div style={{marginRight:'10px'}}>
+                <span style={{opacity: 0.5}}>Research：</span>
+                <a target="_blank" rel="noopener noreferrer"  href="https://t.me/ton_research" >@TON_research</a>
+                </div>
+                <div>
+                <span style={{opacity: 0.5}}>Ru Dev：</span><a target="_blank" rel="noopener noreferrer"  href="https://t.me/TONgramDev" > @TONgramDev</a>
+                </div>
               </div>
               </div>
             </div>
@@ -256,7 +267,7 @@ const HomeComponent = ({ className }) => {
             >
               <img src={twitterIcon} alt="telegramIcon" className="icon" />
               <Text style={{color: '#fff', display: 'block'}}>TON Community Twitter</Text>
-              <a target="_blank" rel="noopener noreferrer"  href="https://twitter.com/TONCommunity" className="footer-link">@TONCommunity</a>
+              <a target="_blank" rel="noopener noreferrer"  href="https://twitter.com/TONCommunity" >@TONCommunity</a>
             </div>
           </Col>
         </Row>
@@ -331,14 +342,24 @@ export const Home = styled(HomeComponent)`
         height: 30px;
         margin-bottom: 20px;
       }
-      .footer-link {
-        margin-bottom: 16px;
-        color: #28A5E7;
-        margin-right: 24px;
-      }
     }
     .logo {
       margin-right: 0
+    }
+  }
+  .text-wrapper {
+    display: flex;
+  }
+  @media (max-width: 768px) {
+    .text-wrapper {
+      flex-direction: column;
+    }
+    .title-wrapper {
+      .title-wrapper-div {
+        .title {
+          font-size: 24px;
+        }
+      }
     }
   }
 `;
