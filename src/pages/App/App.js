@@ -43,7 +43,7 @@ const App = styled(({ className }) => {
           clientWidth > 768 ?
           <div className="wrapper">
             <Anchor className="header" >
-              <AnchorLink href="#news" title="News" />
+              <AnchorLink href="#news" title="News"/>
               <AnchorLink href="#resources" title="Resources" />
               <AnchorLink href="#howtos" title="HOWTOs" />
               <AnchorLink href="#decumentation" title="Documentation" />
@@ -59,10 +59,10 @@ const App = styled(({ className }) => {
               visible={visible}
             >
             <Anchor className="header" >
-              <AnchorLink href="#news" title="News" />
-              <AnchorLink href="#resources" title="Resources" />
-              <AnchorLink href="#howtos" title="HOWTOs" />
-              <AnchorLink href="#decumentation" title="Documentation" />
+              <AnchorLink href="#news" title={<span style={{display: 'block'}} onClick={onClose}>News</span>} />
+              <AnchorLink href="#resources" title={<span style={{display: 'block'}} onClick={onClose}>Resources</span>} />
+              <AnchorLink href="#howtos" title={<span style={{display: 'block'}} onClick={onClose}>HOWTOs</span>} />
+              <AnchorLink href="#decumentation" title={<span style={{display: 'block'}} onClick={onClose}>Documentation</span>} />
             </Anchor>
             <Button onClick={()=>{window.open('https://t.me/TONC_bot')}} type="primary" style={{fontSize: '12px'}}>Join & Get 100+ coins for free</Button>
             </Drawer>
