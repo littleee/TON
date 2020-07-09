@@ -77,6 +77,7 @@ const HomeComponent = ({ className }) => {
                   <Paragraph>
                     Test network has been relaunched. All previously created accounts and smart contracts no longer exist.
                   </Paragraph>
+                  <Text onClick={()=>setIsMore(false)} className='more'>↑ Up</Text>
                 </> : <Text onClick={()=>setIsMore(true)} className='more'>More...</Text>
               }
               </Typography>
@@ -116,6 +117,13 @@ const HomeComponent = ({ className }) => {
               <Col xs={24} lg={8}>
                 <Card title={<a href="projects.html">TON-based projects</a>} className='resources-card'>
                   A list of projects on TON submitted for the <a target="_blank" rel="noopener noreferrer" href="https://contest.com/blockchain-2-bonus">Telegram blockchain competition</a>.
+                </Card>
+              </Col>
+            </Row>
+            <Row justify="space-between" gutter={[16, 16]}>
+              <Col xs={24} lg={8}>
+                <Card title={<a href="/faucet">Faucet</a>} className='resources-card'>
+                  {'<TON Community Blokchain>'} test network Faucet
                 </Card>
               </Col>
             </Row>

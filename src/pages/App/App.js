@@ -48,7 +48,7 @@ const App = styled(({ className }) => {
               <AnchorLink href="#howtos" title="HOWTOs" />
               <AnchorLink href="#decumentation" title="Documentation" />
             </Anchor>
-            <Button onClick={()=>{window.open('https://t.me/TONC_bot')}}type="primary">Join & Get 100+ coins for free</Button>
+            <Button onClick={()=>{window.open('http://t.me/toncommunity_bot')}}type="primary">Join & Get 100+ coins for free</Button>
           </div> :
           <div className="wrapper-mobile">
             <Button shape="circle" icon={<MenuOutlined/>} onClick={showDrawer}/>
@@ -64,7 +64,7 @@ const App = styled(({ className }) => {
               <AnchorLink href="#howtos" title={<span style={{display: 'block'}} onClick={onClose}>HOWTOs</span>} />
               <AnchorLink href="#decumentation" title={<span style={{display: 'block'}} onClick={onClose}>Documentation</span>} />
             </Anchor>
-            <Button onClick={()=>{window.open('https://t.me/TONC_bot')}} type="primary" style={{fontSize: '12px'}}>Join & Get 100+ coins for free</Button>
+            <Button onClick={()=>{window.open('http://t.me/toncommunity_bot')}} type="primary" style={{fontSize: '12px'}}>Join & Get 100+ coins for free</Button>
             </Drawer>
           </div>
         }
